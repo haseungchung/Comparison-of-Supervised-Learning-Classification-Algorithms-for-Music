@@ -10,15 +10,9 @@ In this work, the results of Tim O'Shea's "An Introduction to Deep Learning for 
 The goal of a constellation diagram for 4 bit messages is to stay within a specific design constraint, while maximizing successful communication over noisy channels (the space between the transmitter and receiver). Intuitively, this means to space each constellation point as far as possible from the other points, so that even when noise in the channel distorts the received constellation point placement, it can be most accurately inferred (since the overlap between points+noise is minimized). The following constraints are explored, and the respective expert designed constellation diagram for each constraint is shown.
 
 #### Design Constraints:
-Given that ![x](https://latex.codecogs.com/png.image?\dpi{110}%20\textbf{x}) is a signal vector with ![i](https://latex.codecogs.com/png.image?\dpi{110}%20i) components, ![xi](https://latex.codecogs.com/png.image?\dpi{110}%20x_{i}), the following are constraints for constellation diagrams.
+Given that ![x](https://latex.codecogs.com/png.image?\dpi{110}%20\textbf{x}) is a signal vector with ![i](https://latex.codecogs.com/png.image?\dpi{110}%20i) components, ![xi](https://latex.codecogs.com/png.image?\dpi{110}%20x_{i}), the following are constraints for constellation diagrams.  
 
-1. Average Power Constraint -  
-There is no representative constellation diagram in the industry for this constraint. From personal intuition, I believe it can be attributed to its lack of use. There aren't many real world scenarios that strictly require over other constraints, and there is not a well established theoretically optimized mapping for itk. 
-<p align="center">
-  <img src="https://latex.codecogs.com/png.image?\dpi{110}%20\mathbb{E}\left%20[%20\left|%20x_{i}^{2}%20\right|%20\right%20]%20\leq%201%20%20%20\forall%20i"/>
-</p>  
-
-2. Amplitude Constraint -  
+1. Amplitude Constraint -  
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{110}%20\left|x_{i}%20\right|\leq%201\forall%20i"/>
 </p>  
@@ -28,7 +22,7 @@ There is no representative constellation diagram in the industry for this constr
 <p align="center"> 
   16-QAM diagram, which follows the amplitude constraint <br><em>https://commons.wikimedia.org/w/index.php?curid=1322082</em></p>  
 
-3. Energy Constraint - 
+2. Energy Constraint - 
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{110}%20\left\|\mathbf{x}%20\right\|_{2}^{2}\leq%20n"/>
 </p>  
@@ -37,6 +31,12 @@ There is no representative constellation diagram in the industry for this constr
 </p>  
 <p align="center"> 
   16-PSK diagram, which follows the energy constraint <br><em>https://www.researchgate.net/figure/Gray-mapped-16-PSK-constellation-with-radius-c_fig3_3162047</em></p>  
+
+3. Average Power Constraint -  
+There is no representative constellation diagram in the industry for this constraint. From personal intuition, I believe it can be attributed to its lack of use. There aren't many real world scenarios that strictly require over other constraints, and there is not a well established theoretically optimized mapping for itk. 
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{110}%20\mathbb{E}\left%20[%20\left|%20x_{i}^{2}%20\right|%20\right%20]%20\leq%201%20%20%20\forall%20i"/>
+</p>  
 
 
 
@@ -77,3 +77,14 @@ In part 2, our input vector was also 4 bits, but our output vector was 7 bits, w
 In both cases, the networks were trained end-to-end. This means that after setting up the network, data just had to be put into the encoder, read from the decoder output, and then trained based on error between them. And in this case, the the input data was also the desired output, so all data could be made in-house using a random number generator. For training the network used a batch size of 1024 for 30 epochs, trained with backpropagation using the ADAM optimizer set to a learning rate of 0.003. 
 
 ## Solution:
+
+### Part 1:
+
+1. Amplitude Constraint -  
+The amplitude constraint was enforced at the encoder's final layer, limiting both the I channel and Q channel values to be a maximum value of 1. This was done through an activation function that ensured plotting within the acceptable range, and achieved a constellation diagram very similar to the 16-QAM diagram.
+
+2. Energy Constraint -
+The amplitude constraint was enforced at the encoder's final layer, limiting both the I channel and Q channel values to be have a combined energy 1 (the square root of the addition of the two values, squared). This helped the system to achieve a constellation diagram very similar to the 16-PSK diagram but with an arbitrary rotation.
+
+3. Average Power Constraint - 
+The average constraint was enforced at the autoencoder's loss function, where it was heavily penalized if the energy of the signal exceeded 1. This encouraged the system to learn to keep everything within a radius of 1 from the origin, and created a constellation diagram that seems to achieve maximum distance between the points through a stacked pentagon-like shape.
