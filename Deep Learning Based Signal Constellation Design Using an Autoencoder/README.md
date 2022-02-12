@@ -88,3 +88,7 @@ The amplitude constraint was enforced at the encoder's final layer, limiting bot
 
 3. Average Power Constraint - 
 The average constraint was enforced at the autoencoder's loss function, where it was heavily penalized if the energy of the signal exceeded 1. This encouraged the system to learn to keep everything within a radius of 1 from the origin, and created a constellation diagram that seems to achieve maximum distance between the points through a stacked pentagon-like shape.
+
+### Part 2:
+
+Using the method mentioned in the previous section, the performance of the autoencoder is shown in comparison to the performance of the Hamming code performance for various signal to noise (SNR) levels. The results were identical, indicating that the autoencoder learned a form of error correcting code with the same performance as the Hamming code.
