@@ -51,7 +51,7 @@ For example, for parity bit 1 and message bits 1,2,4, ![p1](https://latex.codeco
   Hamming code (7,4) diagram, with message bits d, and parity bits p<br><em>https://commons.wikimedia.org/w/index.php?curid=1511411</em></p>  
 
 
-## Method:
+## Method
 
 Using the method described in Tim O Shea's work (as seen in the figure below), the neural network architecture of the autoencoder was built. 
 <p align="center">
@@ -76,7 +76,7 @@ In part 2, our input vector was also 4 bits, but our output vector was 7 bits, w
 
 In both cases, the networks were trained end-to-end. This means that after setting up the network, data just had to be put into the encoder, read from the decoder output, and then trained based on error between them. And in this case, the the input data was also the desired output, so all data could be made in-house using a random number generator. For training the network used a batch size of 1024 for 30 epochs, trained with backpropagation using the ADAM optimizer set to a learning rate of 0.003. 
 
-## Solution:
+## Solution
 
 ### Part 1:
 
