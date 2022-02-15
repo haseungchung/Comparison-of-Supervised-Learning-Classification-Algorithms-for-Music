@@ -83,7 +83,7 @@ In both cases, the networks were trained end-to-end. This means that after setti
 1. Amplitude Constraint -  
 The amplitude constraint was enforced at the encoder's final layer, limiting both the I channel and Q channel values to be a maximum value of 1. This was done through an activation function that ensured plotting within the acceptable range, and achieved a constellation diagram very similar to the 16-QAM diagram.
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/89391443/153694906-b46ce1ed-2a37-4536-ab9d-2a2ea279f62e.png"/>
+  <img src="https://user-images.githubusercontent.com/89391443/153977023-4fa89d4f-d76c-490d-80e2-9abd77b1f19f.png"/>
 </p>  
 
 2. Energy Constraint -
@@ -93,7 +93,10 @@ The amplitude constraint was enforced at the encoder's final layer, limiting bot
 </p>  
 
 3. Average Power Constraint - 
-The average constraint was enforced at the autoencoder's loss function, where it was heavily penalized if the energy of the signal exceeded 1. This encouraged the system to learn to keep everything within a radius of 1 from the origin, and created a constellation diagram that seems to achieve maximum distance between the points through a stacked pentagon-like shape.
+The average constraint was enforced at the autoencoder's loss function, where it was heavily penalized if the energy of the signal exceeded 1. This encouraged the system to learn to keep everything within a radius of 1 from the origin, and created a constellation diagram that seems to achieve maximum distance between the points through a stacked pentagon-like shape.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/89391443/153976952-f69ab792-69a2-46a8-a615-d083394ef844.png"/>
+</p>  
 
 ### Part 2:
 
