@@ -100,4 +100,7 @@ The average constraint was enforced at the autoencoder's loss function, where it
 
 ### Part 2:
 
-Using the method mentioned in the previous section, the performance of the autoencoder is shown in comparison to the performance of the Hamming code performance for various signal to noise (SNR) levels. The results were identical, indicating that the autoencoder learned a form of error correcting code with the same performance as the Hamming code.
+Using the method mentioned in the previous section, the performance of the autoencoder is shown in comparison to the performance of the Hamming code performance for various signal to noise (SNR) levels. The results were very similar, indicating that the autoencoder learned a form of error correcting code with a similar performance to that of the Hamming code.  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/89391443/154394882-a768d334-de10-415b-a1b4-473e869d5269.png"/>
+</p>  
