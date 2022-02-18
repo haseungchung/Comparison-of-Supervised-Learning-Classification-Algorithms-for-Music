@@ -15,18 +15,33 @@ Similarly in Abadi's work, an adversarial autoencoder system was modeled in whic
 Building on the success of Abadi and O'Shea's works, this work demonstrates that a Tx-Rx communication system with a noisy channel can be modeled as an autoencoder against a malicious eavesdropper and learn to encrypt their signals given a secret key shared between the Tx-Rx pair only. 
 
 ## Method
-The high-level design of the adversarial autoencoder structure from Abadi's work was implemented in this work, as shown in the figure below. In this work, the Tx took the role of Alice, the Rx took the role of Alice, and the eavesdropper's role remained the same. Furthermore, the P represents a 2-bit message that is being communicated, the K represents a 8 bit secret key that is known to only the Tx-Rx pair, and C represents an additive white gaussian channel with a 7dB signal to noise ratio. 
+The high-level design of the adversarial autoencoder structure from Abadi's work was implemented in this work, as shown in the figure below. In this work, the Tx took the role of Alice, the Rx took the role of Alice, and the eavesdropper's role remained the same. Furthermore, the P represents a 2-bit message that is being communicated, the K represents a 8 bit secret key that is known to only the Tx-Rx pair, and C represents an additive white Gaussian channel with a 7dB signal to noise ratio. 
 
-For low-level design, the Tx-Rx structure was similar to that of the autoencoder structure from O'Shea's work, as shown in the figure below. 
+For low-level design, the Tx-Rx structure was similar to that of the autoencoder structure from O'Shea's work, as shown in the figure below.  
+
+
 As described in the figure, our network was made such that...
 
-1. A 4 bit message and the secret key was transformed into a 16 dimension one-hot vector and sent to the transmitter (encoder).
-2. The message was processed through multiple dense layers in the encoder, and then normalized.
-3. Our transmitter (encoder) portion of the autoencoder was to output a signal given a specific constraint.
-4. The signal is corrupted by channel noise (modeled as additive white Gaussian noise [AWGN]).
-5. a) The signal + noise is received by the eavesdropper.  
+1. A 2 bit message and the secret key is input to the Tx (encoder).
+2. The message was processed through three dense layers in the encoder and outputs a 2 dimensional message.
+3. The signal is corrupted by channel noise (modeled as additive white Gaussian noise [AWGN]).
+4. a) The signal + noise is received by the eavesdropper.  
    b) The signal + noise + key is received by the receiver.
-6. a) The signal + noise is processed through multiple dense layers of the receiver, and then activated via a softmax activation to predict the original message.  
-   b) The signal + noise is processed through multiple dense layers of the eavesdropper, and then activated via a softmax activation to predict the original message.  
+5. a) The signal + noise is processed through three dense layers of the receiver, and then activated via a tanh activation to predict the original bit message.  
+   b) The signal + noise is processed through four dense layers of the eavesdropper, and then activated via a tanh activation to predict the original message.  
 
 ## Solution
+Executing the code for 700 epochs of 16, 1024 sized batches resulted in a loss function shown in the graph below.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/89391443/154606632-20b83801-54df-45fe-8e6e-61ee37738cd7.png"/>
+</p>  
+<p align="center"> 
+  Loss Function Values for all 700 epoches of 16, 1024 sized batches in the training sequence</p>  
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/89391443/154606990-644fc5bb-c3e3-4419-b39c-c17e7500d564.png"/>
+</p>  
+<p align="center"> 
+  Loss Function Values for the first 200 iterations in the training sequence.</p>  
+  
+At the very beginning of the training sequence, Eve was able to decrypt the Tx's message better than the Rx, but shortly after, around 150~200 iterations, the Tx-Rx system started outperforming Eve. After Tx-Rx learned to encrypt their messages, Eve essentially hovered at a loss value of 1 (which indicates an optimal ~50% error rate), while the Tx-Rx system hovered near 0 (~100% accuracy). The finals results support this claim, as a test case of 10000 messages showed that Tx-Rx was able to communicate with 100% accuracy, while Eve was able to figure out 43.49% of all bits in the messages.
