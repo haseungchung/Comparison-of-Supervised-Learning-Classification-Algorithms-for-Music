@@ -33,15 +33,15 @@ As described in the figure, our network was made such that...
 ## Solution
 Executing the code for 700 epochs of 16, 1024 sized batches resulted in a loss function shown in the graph below.
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/89391443/154606632-20b83801-54df-45fe-8e6e-61ee37738cd7.png"/>
+  <img src="https://user-images.githubusercontent.com/89391443/154609061-90bb066f-5a06-4d4d-bbaa-4294c98a6d8b.png"/>
 </p>  
 <p align="center"> 
-  Loss Function Values for all 700 epoches of 16, 1024 sized batches in the training sequence</p>  
-  
+  <em>Loss Function Values for all 700 epoches of 16, 1024 sized batches (11,200 total iterations) in the training sequence</em></p>  
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/89391443/154606990-644fc5bb-c3e3-4419-b39c-c17e7500d564.png"/>
 </p>  
 <p align="center"> 
-  Loss Function Values for the first 200 iterations in the training sequence.</p>  
+   <em>Loss Function Values for the first 500 iterations in the training sequence</em></p>  
   
 At the very beginning of the training sequence, Eve was able to decrypt the Tx's message better than the Rx, but shortly after, around 150~200 iterations, the Tx-Rx system started outperforming Eve. After Tx-Rx learned to encrypt their messages, Eve essentially hovered at a loss value of 1 (which indicates an optimal ~50% error rate), while the Tx-Rx system hovered near 0 (~100% accuracy). The finals results support this claim, as a test case of 10000 messages showed that Tx-Rx was able to communicate with 100% accuracy, while Eve was able to figure out 43.49% of all bits in the messages.
