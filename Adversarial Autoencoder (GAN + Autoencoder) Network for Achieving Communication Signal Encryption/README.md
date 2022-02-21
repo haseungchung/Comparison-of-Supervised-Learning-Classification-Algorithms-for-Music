@@ -18,8 +18,10 @@ Building on the success of Abadi and O'Shea's works, this work demonstrates that
 <p align="center">
   <img src="https://user-images.githubusercontent.com/89391443/155038773-3f0f9674-ef18-4b17-ae2b-fc6b36f9e05d.png"/>
 </p>  
+<p align="center"> 
+   <em>Adversarial Autoencoder Network Architecture with Backpropagation</em></p>  
 
-The high-level design of the adversarial autoencoder structure from Abadi's work was implemented in this work, as shown in the figure above. In this work, the Tx took the role of Alice, the Rx took the role of Bob, and the eavesdropper's role remained the same. Furthermore, the k represents a 2-bit message that is being communicated, the key vector is a 8 bit secret key that is known to only the Tx-Rx pair, and the channel is an AWGN (Additive White Gaussian Noise) channel with 10dB. The encoder outputs a two dimensional message with a maximum energy of 1 per component.  
+The high-level design of the adversarial autoencoder from Abadi's work was implemented in this work, as shown in the figure above. In this work, the Tx took the role of Alice, the Rx took the role of Bob, and the eavesdropper's role remained the same. Furthermore, the k represents a 2-bit message that is being communicated, the key vector is a 8 bit secret key that is known to only the Tx-Rx pair, and the channel is an AWGN (Additive White Gaussian Noise) channel with 10dB. The encoder outputs a two dimensional message with a maximum energy of 1 per component.  
 
 What is also highlighted in the diagram is the backpropagation paths that the network goes through to update itself (via weight updating). More specifically, the training sequence is as follows:
 
@@ -33,7 +35,7 @@ What is also highlighted in the diagram is the backpropagation paths that the ne
 7. Steps 1-3 are repeated.
 8. The signal + noise is received by Eve (without any knowledge of the key).
 9. The signal + noise is processed through four dense layers of the Eve, and then activated via a tanh activation to predict the original message.  
-10. Using the difference between Eve's recovered message and the original message, the weights of Eve are updated.
+10. Using the difference between Eve's recovered message and the original message, the weights of Eve are updated (Tx's weights are frozen during this portion to make sure the Tx doesn't update according to the results of Eve).
 11. Steps 7-10 are repeated.
 
 ## Solution
