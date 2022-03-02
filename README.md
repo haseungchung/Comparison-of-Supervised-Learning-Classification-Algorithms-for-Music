@@ -19,13 +19,13 @@ You can scroll through this page to read short descriptions of each project, or 
 
 ### 1. Real Time Posture Detection and Correction Using the Yolov3 Algorithm and a Residual Neural Network - current
 In this personal project inspired by my own poor posture, the goals were to
-1. detect a person in the frame
+1. Detect a person in the frame
 2. Focus in on the person and then detect their posture
-3. send feedback to the user in live time to alert them when posture is poor.  
+3. Send feedback to the user in live time to alert them when posture is poor.  
 
 The plan to accomplish these goals are to first run a yolov3 object detection algorithm to detect a person in the frame, and then use a cropped image of the person to detect their posture using a residual neural network. Based on these results, the program is to alert the user of poor posture in an annoying way, such that he or she fixes it. So far, the yolov3 object detection algorithm with pretrained weights have been successfully applied. I am currently working on producing data to train a residual neural network for posture detection.
 
-### 2. Residual Convolutional Neural Network for Communication Signal Classification
+### 2. Residual Neural Network for Communication Signal Classification
 In this work, Tim O'Shea's residual neural network from "Over the Air Deep Learning Based Radio Signal Classification" was replicated, and applied to the Radio ML 2016c dataset of 11 different signal modulations. Results confirmed higher classification accuracy for the residual neural network than conventional convolutional neural networks due to more information being retained through skip connections in the network.
 
 ### 3. Adversarial Autoencoder (GAN + Autoencoder) Network for Achieving Communication Signal Encryption
