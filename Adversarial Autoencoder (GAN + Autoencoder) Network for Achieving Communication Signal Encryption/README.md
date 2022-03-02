@@ -1,7 +1,7 @@
 # Adversarial Autoencoder (GAN + Autoencoder) Network for Achieving Communication Signal Encryption
 
 ## Abstract
-This work was inspired by Abadi's "Learning to Protect Communications with Adversarial Neural Cryptography" [1] and O'Shea's autoencoder model from "An Introduction to Deep Learning for the Physical Layer"[2].  
+This work was inspired by Abadi's "Learning to Protect Communications with Adversarial Neural Cryptography" [1] and O'Shea's autoencoder model from "An Introduction to Deep Learning for the Physical Layer" [2].  
 
 In wireless communications, signals are often at risk of being detected, intercepted, and even exploited (eavesdropped) by a malicious party. In order to prevent exploitation, many trasmitters (Tx) and receivers (Rx) choose to encrypt their signals, commonly with a key that only the two players know. In practice, this can be through static keys, or through dynamic keys, which may update on conditions such as time, signal types, etc... In this work, we choose to model a Tx, Rx, and eavesdropper (Eve) as an adversarial autoencoder, where the Tx is the encoder who wishes to send encrypted messages to Rx (the decoder), all the while as Eve tries to eavesdrop and decrypt these messages. Through supervised learning, the autoencoder was able to learn to create communication signals bit data messages (2 bits) that the Rx can understand (~100% accuracy) without the eavesdropper decrypting messages (43% ccuracy) by creating its own ecryption method from a shared key (8 bits).  
 
