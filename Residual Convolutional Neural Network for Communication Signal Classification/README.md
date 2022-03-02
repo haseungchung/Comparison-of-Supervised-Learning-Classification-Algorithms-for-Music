@@ -39,7 +39,7 @@ At the time of its publication, the CNN was a highly advanced model for deep lea
 
 ### Modified Residual Neural Network
 
-By the time O'Shea's [1], the field of deep learning had greatly improved models than the CNN from 2016. One such solution was called residual neural networks, a network that utilized skip connections between layers to make sure that the aforementioned problems from the CNN were solved. Skip connections allowed layers to have non-vanishing gradients by being closer in connection to the error function (at the end of the network), and changed the topography of gradient descent to have less local minima and a more prominent global minimum. 
+By late 2017, when [1] was published, the field of deep learning had greatly improved models than the CNN from 2016. One such solution was called the residual neural network, a network that utilized skip connections between layers to make sure that the aforementioned problems from the CNN were solved. Skip connections allowed layers to have non-vanishing gradients by being closer in connection to the error function (at the end of the network), and changed the topography of gradient descent to have less local minima and a more prominent global minimum. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/89391443/155812250-1beaed78-bf02-4cc8-a6d6-baf9ad0db399.png"/>
@@ -47,7 +47,7 @@ By the time O'Shea's [1], the field of deep learning had greatly improved models
 <p align="center"> 
    <em> The "loss surface", or the gradient descent topography of networks without skip connections (left) and with skip connections (right). <br> https://arxiv.org/pdf/1712.09913.pdf </em></p>  
 
-This discovery in the field of deep learning was utilized by O'Shea for [1], by testing a residual network to classify radio signals. In my project, I repeated the network architecture from [1], and applied it to an older dataset to compare results against the CNN from [2]. The network utilized skip connections in "residual units", and the network architecture is shown below.
+This discovery in the field of deep learning was utilized in [1], by testing a residual network to classify radio signals. In my project, I repeated the network architecture from [1], and applied it to an older dataset to compare results against the CNN from [2]. The network utilized skip connections in "residual units", and the network architecture is shown below.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/89391443/155807682-b723dff4-7acc-4f2e-9c4b-1a4ce135c753.png"/>
