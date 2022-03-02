@@ -1,9 +1,9 @@
 # Residual Neural Network for Communication Signal Classification
 
 ## Abstract
-This work was inspired by Tim O'Shea's "Over the Air Deep Learning Based Radio Signal Classification".
+This work was inspired by Tim O'Shea's "Over the Air Deep Learning Based Radio Signal Classification" [1].
 
-In electronic warfare, the electronic attack division is tasked with attacking and disrupting enemy signals via detection, interception, and exploitation (in that order). Traditionally, detection and interception was done through man-made mathematical algorithms, and the game between attackers and protectors leaned in favor of the protectors, especially when it came to energy efficiency. However, artificial intelligence (AI) has recently been on the forefront of disrupting the field of electronic attack, proving to be more efficient in intercepting enemy signals than traditional methods (such as higher order statistics [HOS]). Tim O'Shea demonstrated this claim in his 2016 paper, "Convolutional Radio Modulation Recognition Networks", and his 2017 work, "Over the Air Deep Learning Based Radio Signal Classification". In this work, the modified residual network (MRN) architecture was recreated and its accuracy in classifying signal modulation types was compared to that of O'Shea's convolution neural network (CNN) from his 2016 paper, and against HOS based classification. Results demonstrated the MRN outperformed the CNN, and both of the AI based methods outperformed the HOS based method.
+In electronic warfare, the electronic attack division is tasked with attacking and disrupting enemy signals via detection, interception, and exploitation (in that order). Traditionally, detection and interception was done through man-made mathematical algorithms, and the game between attackers and protectors leaned in favor of the protectors, especially when it came to energy efficiency. However, artificial intelligence (AI) has recently been on the forefront of disrupting the field of electronic attack, proving to be efficient in intercepting enemy signals [1],[2]. In this work, the modified residual network (MRN) architecture from [1] was recreated and its accuracy in classifying signal modulation types was compared to that of [2]. Results demonstrated the MRN outperformed the CNN, showing that deep learning algorithms can be very effective in signal modulation classification, and that certain network architectures are superior than others in this task.
 
 ## Introduction
 
@@ -17,7 +17,7 @@ In this work, the power of AI for EA was demonstrated by applying a MRN to a rad
 
 ### Dataset
 
-The dataset for this work was the RadioML 2016.10A dataset, consisting of 8 digital and 3 analog radio signal modulation types with varying signal-to-noise (SNR) ratios from -20 dB to 20 dB normalized around 0 dB. Each modulation had 20,000 examples of the I and Q channel values, and were 128 micro seconds long (128 samples of signals per example). The overall dimension of the dataset was therefore (220000, 2, 128).
+The dataset for this work was the RadioML 2016.10A dataset, consisting of 8 digital and 3 analog radio signal modulation types with varying signal-to-noise (SNR) ratios from -20 dB to 20 dB normalized around 0 dB. Each modulation had 20,000 examples of the I and Q channel values, and were 128 micro seconds long (128 samples of signals per example). The overall dimension of the dataset was therefore (220000, 2, 128). 80% of the total dataset was used for training (68%) and validation (12%), and 20% for testing. 
 
 ### Convolutional Neural Network
 
@@ -61,15 +61,28 @@ This discovery in the field of deep learning was utilized by O'Shea for his 2017
    <em>Residual Unit (top) and Residual Stack (bottom) Architecture <br> https://arxiv.org/pdf/1712.04578.pdf </em></p>  
 
 ## Solution
-Executing the code for 700 epochs of 16, 1024 sized batches resulted in a loss function shown in the graph below.
+Executing the code for 35 epochs of 147, 1024 sized batches resulted in a loss function shown in the graph below.
 <p align="center">
-  <img src=""/>
+  <img src="https://user-images.githubusercontent.com/89391443/156303540-3fe13c14-96ec-4ac6-b87e-c8e1a276d91c.png"/>
 </p>  
 <p align="center"> 
-  <em></em></p>  
+  <em>Training Performance of MRN from [1] in on RadioML 2016.10A Dataset</em></p>  
 
 <p align="center">
-  <img src=""/>
+  <img src="https://user-images.githubusercontent.com/89391443/156302608-ccf00473-5bb1-46af-93e3-e127f553138d.png"/>
 </p>  
 <p align="center"> 
-   <em></em></p>  
+  <em>Classification Accuracy Performance of MRN from [1] and CNN from [2] in Classifying Signals from the RadioML 2016.10A Dataset</em></p>  
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/89391443/156303014-db784b24-577e-466f-a97b-99188ef066b9.png"/>
+</p>  
+<p align="center">
+   <em>Confusion Matrix of MRN at SNR=0dB (Signal to Noise Ratio = 1:1)</em></p>  
+
+We can also see from the training performance that the validation accuracy was starting to flatten, indicating that further training could either risk overfitting and/or not helpful, meaning that further epochs were not necessary. After the training sequence, we were able to see and confirm that the MRN was more accurate across the SNR spectrum, having better accuracy than the CNN (whose results were taken directly from [2]). An example of the confusion matrix at SNR=0dB further helps to visually show the accuracy of the MRN, being mostly accurate throughout the different modulation types, except 16-QAM and WBFM. Given more data (and a better division of training, validation, and test data), perhaps the accuracy could get even higher, since larger networks work better with more nontrivial data. 
+
+
+## References
+[1] T. J. O’Shea, T. Roy, and T. C. Clancy, “Over-the-air deep learning based radio signal classification,” IEEE Journal of Selected Topics in Signal Processing, vol. 12, pp. 168–179, Feb 2018.  
+[2] T. J. O’Shea, J. Corgan, and T. C. Clancy, “Convolutional radio modulation recognition networks,” in Proc. Int. Conf. Eng. Applications of Neural Networks. Springer, 2016, pp. 213–226
