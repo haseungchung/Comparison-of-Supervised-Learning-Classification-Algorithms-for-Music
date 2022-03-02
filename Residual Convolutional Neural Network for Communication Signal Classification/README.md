@@ -1,4 +1,4 @@
-# Residual Convolutional Neural Network for Communication Signal Classification
+# Residual Neural Network for Communication Signal Classification
 
 ## Abstract
 This work was inspired by Tim O'Shea's "Over the Air Deep Learning Based Radio Signal Classification".
@@ -47,7 +47,7 @@ By the time O'Shea's published his 2017 paper, "Over the Air Deep Learning Based
 <p align="center"> 
    <em> The "loss surface", or the gradient descent topography of networks without skip connections (left) and with skip connections (right). <br> https://arxiv.org/pdf/1712.09913.pdf </em></p>  
 
-This great innovation in the field of deep learning was utilized by O'Shea for his 2017 work, by testing a residual network to classify radio signals. In my project, I repeated the network architecture that he used in 2017, and applied it to an older dataset to compare results against the CNN in his 2016 work. The network utilized skip connections in "residual units", and the network architecture is shown below.
+This discovery in the field of deep learning was utilized by O'Shea for his 2017 work, by testing a residual network to classify radio signals. In my project, I repeated the network architecture that he used in 2017, and applied it to an older dataset to compare results against the CNN in his 2016 work. The network utilized skip connections in "residual units", and the network architecture is shown below.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/89391443/155807682-b723dff4-7acc-4f2e-9c4b-1a4ce135c753.png"/>
