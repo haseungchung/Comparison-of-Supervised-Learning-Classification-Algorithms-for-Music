@@ -11,7 +11,7 @@ You can scroll through this page to read short descriptions of each project, or 
 2. Residual Neural Network for Communication Signal Classification
 3. Adversarial Autoencoder (GAN + Autoencoder) Network for Achieving Communication Signal Encryption
 4. Deep Learning Based Signal Constellation Design Using an Autoencoder
-5. Robotic Arm Pose Estimation using Random Forest Regression on Stretch Sensor Resistance Readings
+5. Pose Estimation of a Robotic Arm via Resistive Stress Sensors and Supervised Learning
 6. Prediction of H1B Visa Approval using Machine Learning Algorithms
 7. Comparison of Supervised Learning Classification Algorithms for Music  
 
@@ -38,7 +38,7 @@ In this work, the results of Tim O'Shea's "An Introduction to Deep Learning for 
 
 The trained autoencoder designed signals that greatly resembled existing theory based communication signals, i.e. phase shift keying and quadrature amplitude modulation for the energy constraint and amplitude constrant, respectively. For an average energy constraint it was able to create more efficient signal patterns than existing patterns (16 QAM).
 
-### 5. Robotic Arm Pose Estimation using Random Forest Regression on Stretch Sensor Resistance Readings - 2018
+### 5. Pose Estimation of a Robotic Arm via Resistive Stress Sensors and Supervised Learning - 2018
 This work explored a possible method of pose estimation that is both biomimetric and compatible with soft-body robotics. For an example case, a robotic arm is affixed with segments of carbon-impregnated silicone cords, serving as resistive stretch sensors. By employing various machine learning algorithms in the form of least squares regression (LSR) and random forest regression (RFR) we have developed a method for resistance readings through the stretch sensors to joint angles of the robotic arm. RFR the best of the two methods, yielding average errors for the two explored angles of 0.43 and 0.58%. These results suggest that these silicone sensors would be suitable for implementation in a soft-bodied robot.  
 
 ### 6. Prediction of H1B Visa Approval Using Machine Learning Algorithms - 2018
